@@ -15,7 +15,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a className="navList" href="#store">
+            <a className="navList" href="#Info">
               Neighbor Info
             </a>
           </li>
