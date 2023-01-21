@@ -9,10 +9,10 @@ export default function Header() {
       <nav>
         <ul className="nav_links">
           <li>
-            <a href="/">HOME</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="/Lots">Neighbor Info</a>
+            <a href="/Lots">Info</a>
           </li>
           <li>
             <a href="/Posts">Posts</a>
@@ -21,9 +21,9 @@ export default function Header() {
         </ul>
         
       </nav>
-      <a className="cta" href="#">
+      {/* <a className="cta" href="#">
           <button>Contact</button>
-        </a>
+        </a> */}
     </header>
   );
 }

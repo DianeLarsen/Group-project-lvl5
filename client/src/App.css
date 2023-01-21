@@ -13,12 +13,22 @@ li, a, button {
 }
 header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
     align-items: center;
     padding: 30px 10%;
 }
 .logo{
     cursor: pointer;
+    /* below is 2nd option */
+        /* margin-right: auto; */
+    /* below is 3rd option */
+    order: 3;
+    margin-left: auto;
+}
+nav{
+    /* below is 3rd option */
+    order: 1;
 }
 .nav_links{
     list-style: none;
@@ -26,15 +36,22 @@ header {
 .nav_links li{
     display: inline-block;
     padding: 0px, 20px;
-    margin-right: 15px;
+    margin-right: 20px;
+} 
+/* below is 3rd option */
+.nav_links li:nth-child(1){
+   
+    padding: 0px, 20px, 0px, 0px;
+    
 } 
 .nav_links li a{
     transition: all 0.3s ease 0s;
 }
 .nav_links li a:hover {
-    transition: all 0.3s ease 0s;
+    color: #0088a9
 }
-button{
+/* button{
+ 
     padding: 9px 25px;
     background-color: rgba(0,136,169,1);
     border: none;
@@ -44,4 +61,19 @@ button{
 }
 button:hover{
     background-color: rgba(0,136,169,0.8);
-}
+} */
+/* below is 3rd option */
+/* .cta {
+    order: 2;
+} */
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(119, 79, 79);
+    color: rgb(162, 160, 160);
+    text-align: center;
+    padding: 10px;
+ }
