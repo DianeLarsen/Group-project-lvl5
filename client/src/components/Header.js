@@ -1,42 +1,29 @@
 import React from "react";
 
-
 export default function Header() {
   return (
-    <div className="header-wrapper-outer" id="grid-container">
-      <a className="logo" href="/#">Placeholder for logo/pic
-        {/* <img className="logo" src={bookLogo} alt="We Be Bookn" /> */}
+    <header className="header-wrapper-outer" id="grid-container">
+      <a className="logo" href="/#">
+      <i class="fa-solid fa-house fa-2x"></i>
       </a>
-      <div className="navigation-wrapper">
-        <ul className="nav" id="grid-container-nav">
+      <nav>
+        <ul className="nav_links">
           <li>
-            <a className="navList" href="/">
-              HOME
-            </a>
+            <a href="/">HOME</a>
           </li>
           <li>
-            <a className="navList" href="/Lots">
-              Neighbor Info
-            </a>
+            <a href="/Lots">Neighbor Info</a>
           </li>
           <li>
-            <a className="navList" href="/Posts">
-              Posts
-            </a>
+            <a href="/Posts">Posts</a>
           </li>
-          
-          <li>
-            
-            <svg data-v-43540933="" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" role="img" className="svg-user">
 
-            <use href="#user-icon" ></use>
-            </svg>
-            
-          </li>
-   
         </ul>
         
-      </div>
-    </div>
+      </nav>
+      <a className="cta" href="#">
+          <button>Contact</button>
+        </a>
+    </header>
   );
 }
