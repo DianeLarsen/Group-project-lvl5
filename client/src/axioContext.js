@@ -5,12 +5,7 @@ const AxioContext = React.createContext();
 
 function AxioContextProvider(props) {
   return (
-    <AxioContext.Provider
-      value={{
-        handleChange, handleSubmit, handleDelete,
-      
-      }}
-    >
+    <AxioContext.Provider >
       {props.children}
     </AxioContext.Provider>
   );
