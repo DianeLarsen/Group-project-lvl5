@@ -14,15 +14,13 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  /* justify-content: flex-end; */
   align-items: center;
   padding: 10px 5%;
   background-color: rgb(119, 79, 79);
 }
 li,
-a,
-button {
-  font-size: 16px;
+a {
+  font-size: 1.4rem;
   color: #edf0f1;
   text-decoration: none;
   background-color: rgb(119, 79, 79);
@@ -30,16 +28,10 @@ button {
 
 .logo {
   cursor: pointer;
-  /* below is 2nd option */
-  /* margin-right: auto; */
-  /* below is 3rd option */
-  /* order: 3;
-    margin-left: auto; */
+
   background-color: rgb(119, 79, 79);
 }
 nav {
-  /* below is 3rd option */
-  /* order: 1; */
   background-color: rgb(119, 79, 79);
 }
 .nav_links {
@@ -52,12 +44,7 @@ nav {
   margin-right: 20px;
   background-color: rgb(119, 79, 79);
 }
-/* below is 3rd option */
-/* .nav_links li:nth-child(1){
-   
-    padding: 0px, 20px, 0px, 0px;
-    
-}  */
+
 .nav_links li a {
   transition: all 0.3s ease 0s;
   background-color: rgb(119, 79, 79);
@@ -65,22 +52,6 @@ nav {
 .nav_links li a:hover {
   color: #0088a9;
 }
-/* button{
- 
-    padding: 9px 25px;
-    background-color: rgba(0,136,169,1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-button:hover{
-    background-color: rgba(0,136,169,0.8);
-} */
-/* below is 3rd option */
-/* .cta {
-    order: 2;
-} */
 
 footer {
   position: fixed;
@@ -128,7 +99,6 @@ footer {
   height: 100vh;
   background: #7f7fd5;
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-  
 }
 
 .card-container {
@@ -138,14 +108,12 @@ footer {
   max-width: 1200px;
   margin-block: 2rem;
   gap: 2rem;
-
 }
 
 .card__image {
   max-width: 100%;
   display: flex;
   object-fit: cover;
-
 }
 
 .card {
