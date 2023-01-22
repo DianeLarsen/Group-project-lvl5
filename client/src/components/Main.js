@@ -1,15 +1,17 @@
 import React from "react";
-
+import { Routes, Route } from "react-router-dom";
+import Home from "../pages/Home.js";
+import Lots from "../pages/Lots.js";
+import Posts from "../pages/Posts.js";
 
 export default function Footer() {
   return (
-    <div className="footer-wrapper-outer">
-      <footer className="footer">
-        
-        <a href="https://www.facebook.com/profile.php?id=100086997371424"><i  className="fa-brands fa-facebook  fa-2x"></i></a>
-        <a href="https://www.instagram.com/webebooknmonroe/"><i class="fa-brands fa-instagram fa-2x"/></a>
-       
-          </footer>
+    <div className="main-wrapper-outer">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lots" element={<Lots />} />
+        <Route path="/posts" element={<Posts />} />
+      </Routes>
     </div>
   );
 }

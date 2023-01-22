@@ -1,0 +1,92 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+body{
+    background-color: #24252A;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: flex-end; */
+    align-items: center;
+    padding: 10px 5%;
+    background-color: rgb(119, 79, 79);
+}
+li, a, button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+    background-color: rgb(119, 79, 79);
+}
+
+.logo{
+    cursor: pointer;
+    /* below is 2nd option */
+        /* margin-right: auto; */
+    /* below is 3rd option */
+    /* order: 3;
+    margin-left: auto; */
+    background-color: rgb(119, 79, 79);
+}
+nav{
+    /* below is 3rd option */
+    /* order: 1; */
+    background-color: rgb(119, 79, 79);
+}
+.nav_links{
+    list-style: none;
+    background-color: rgb(119, 79, 79);
+}
+.nav_links li{
+    display: inline-block;
+    padding: 0px, 20px;
+    margin-right: 20px;
+    background-color: rgb(119, 79, 79);
+} 
+/* below is 3rd option */
+/* .nav_links li:nth-child(1){
+   
+    padding: 0px, 20px, 0px, 0px;
+    
+}  */
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+    background-color: rgb(119, 79, 79);
+}
+.nav_links li a:hover {
+    color: #0088a9
+}
+/* button{
+ 
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+button:hover{
+    background-color: rgba(0,136,169,0.8);
+} */
+/* below is 3rd option */
+/* .cta {
+    order: 2;
+} */
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(119, 79, 79);
+    color: rgb(162, 160, 160);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+ }
