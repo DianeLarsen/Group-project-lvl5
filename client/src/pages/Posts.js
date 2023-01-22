@@ -1,10 +1,12 @@
 import React from "react";
+import PostsCard from "../components/PostsCard.js"
 
 export default function Posts() {
   return (
     <div className="posts">
      
       <div className="card-container">
+      
         <div className="card">
           <div className="card__header">
             <img
@@ -102,6 +104,7 @@ export default function Posts() {
           </div>
         </div>
       </div>
+      <PostsCard />
     </div>
   );
 }

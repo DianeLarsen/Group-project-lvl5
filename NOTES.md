@@ -39,3 +39,6 @@ npm install axios
 npm start for frontend
 nodemon server.js for server
 sudo mongod --dbpath ~/data/db for mongodb (might be already running, do a get of localhost:9000/bounties to see)
+
+added dependency for timestamp
+npm i react-timestamp
