@@ -9,8 +9,8 @@ body{
 }
 header {
     display: flex;
-    /* justify-content: space-between; */
-    justify-content: flex-end;
+    justify-content: space-between;
+    /* justify-content: flex-end; */
     align-items: center;
     padding: 10px 5%;
     background-color: rgb(119, 79, 79);
@@ -29,13 +29,13 @@ li, a, button {
     /* below is 2nd option */
         /* margin-right: auto; */
     /* below is 3rd option */
-    order: 3;
-    margin-left: auto;
+    /* order: 3;
+    margin-left: auto; */
     background-color: rgb(119, 79, 79);
 }
 nav{
     /* below is 3rd option */
-    order: 1;
+    /* order: 1; */
     background-color: rgb(119, 79, 79);
 }
 .nav_links{
@@ -49,11 +49,11 @@ nav{
     background-color: rgb(119, 79, 79);
 } 
 /* below is 3rd option */
-.nav_links li:nth-child(1){
+/* .nav_links li:nth-child(1){
    
     padding: 0px, 20px, 0px, 0px;
     
-} 
+}  */
 .nav_links li a{
     transition: all 0.3s ease 0s;
     background-color: rgb(119, 79, 79);
