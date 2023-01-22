@@ -24,6 +24,7 @@ lotRouter.post("/", (req, res, next) => {
         return res.status(201).send(savedLot)
     })
 })
+// Update
 lotRouter.put("/:lotID", (req, res) => {
     const lotID = req.params.lotID
     const updatedObject = req.body
