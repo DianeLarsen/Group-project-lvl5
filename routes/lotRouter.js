@@ -16,7 +16,7 @@ lotRouter.get("/", (req, res, next) => {
 // POST ONE
 lotRouter.post("/", (req, res, next) => {
     const newLot = new Lots(req.body)
-    Lots.save((err, savedLot) => {
+    newLot.save((err, savedLot) => {
         if(err){
             res.status(500)
             return next(err)

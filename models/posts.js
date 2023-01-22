@@ -22,7 +22,7 @@ const postsSchema = new Schema({
         required: true
     },
     img: {
-        type: Image
+        type: String,
     }, 
     name: {
         type: String
