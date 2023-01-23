@@ -187,3 +187,10 @@ footer {
 .user__info > small {
   color: #666;
 }
+
+.lotsCard-container{
+    height: 100px;
+    width: 100px;
+    background-color: #ece9e6;
+    color:rgba(0, 0, 0, 0.1)
+}

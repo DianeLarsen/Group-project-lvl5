@@ -11,17 +11,24 @@ function AxioContextProvider(props) {
     info: "",
   };
   const [lotCard, setLotCard] = useState(lotsIntialPost);
+
   function getLot() {
     axios
       .get("/lots")
-      .then((res) => setLots(res.data))
+      .then((res) => {
+        const newCard = res.data;
+        console.log(newCard)
+        setLots(newCard)
+      })
       .catch((error) => console.log(error.response.data.errMsg));
   }
   useEffect(() => {
     getLot();
   }, []);
   return (
-    <AxioContext.Provider >
+    <AxioContext.Provider value={{lot:lots.lot,
+    lastName: lots.lastName,
+    info: lots.info}}>
       {props.children}
     </AxioContext.Provider>
   );

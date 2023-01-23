@@ -5,7 +5,7 @@ import LotsCard from "../components/LotsCard.js"
 export default function Lots() {
 
   return (
-    <div className="home">
+    <div className="lots">
       <img className="lot-map" src={lotMap} alt="lot map"/>
       <button>Enter a new Lot</button>
       <form>
