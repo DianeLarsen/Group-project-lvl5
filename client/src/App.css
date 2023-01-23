@@ -187,10 +187,25 @@ footer {
 .user__info > small {
   color: #666;
 }
+.lot-form-map-container{
+  display: inline-flex;
+  
+}
+.allthelots{
+  width: 100%;
+  padding: 20px;
+  display: inline-flex;
+  justify-content: space-around;
+}
 
 .lotsCard-container{
     height: 100px;
-    width: 100px;
+    width: 200px;
     background-color: #ece9e6;
-    color:rgba(0, 0, 0, 0.1)
+    color:rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
 }

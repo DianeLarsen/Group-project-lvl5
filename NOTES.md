@@ -26,19 +26,31 @@ npm install mongoose
     create client folder
     cd into client folder
     npx create-react-app .
-    in client folder and package.json, go to bottom before last } enter ,"proxy": "http://localhost:9000"
-clear data:
+    in client folder and package.json, go to bottom before last } 
+    enter:    
+        ,"proxy": "http://localhost:9000"
+clear files created by create-react-app:
     start with index.js, App.js, App.css
+    create folders:
+        components, pages, assets
+    update title and fav.ico 
+    
 
-// setting up axios //
+npm install
+    -if cloning
+
 npm install axios
-
+    -setting up axios
+npm i react-timestamp
+    -added dependency for timestamp
 
 
 // to run everything open up different bash terminals
-npm start for frontend
-nodemon server.js for server
-sudo mongod --dbpath ~/data/db for mongodb (might be already running, do a get of localhost:9000/bounties to see)
+npm start 
+    -for frontend
+nodemon server.js 
+    -for server
+sudo mongod --dbpath ~/data/db 
+    -for mongodb (might be already running, do a get of localhost:9000/bounties to see)
 
-added dependency for timestamp
-npm i react-timestamp
+
