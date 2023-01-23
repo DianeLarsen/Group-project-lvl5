@@ -4,7 +4,7 @@ import Home from "../pages/Home.js";
 import Lots from "../pages/Lots.js";
 import Posts from "../pages/Posts.js";
 
-export default function Footer() {
+export default function Main() {
   return (
     <div className="main-wrapper-outer">
       <Routes>

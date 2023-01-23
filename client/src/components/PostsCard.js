@@ -7,12 +7,13 @@ export default function LotsCard(props) {
     type: "General",
     lot: null,
     description: "",
-    timestamp: Date()
+    timestamp: Date(),
+    user: ""
   };
   const [cardPosts, setCardPosts] = useState(intialPost);
 
   return (
-    <div className="lotsCard-container">
+    <div className="postCard-container">
       <div className="card">
           <div className="card__header">
             <img
@@ -37,7 +38,7 @@ export default function LotsCard(props) {
                 className="user__image"
               />
               <div className="user__info">
-                <h5>Jane Doe</h5>
+                <h5>{cardPosts.user}</h5>
                 <small><Timestamp relative date={cardPosts.timestamp} /></small>
               </div>
             </div>

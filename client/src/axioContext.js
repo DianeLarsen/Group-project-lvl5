@@ -26,9 +26,7 @@ function AxioContextProvider(props) {
     getLot();
   }, []);
   return (
-    <AxioContext.Provider value={{lot:lots.lot,
-    lastName: lots.lastName,
-    info: lots.info}}>
+    <AxioContext.Provider value={[lots, setLots]}>
       {props.children}
     </AxioContext.Provider>
   );
