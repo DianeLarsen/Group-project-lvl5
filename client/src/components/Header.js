@@ -34,8 +34,7 @@ export default function Header() {
         ></path>
        
       </svg>
-      <a className="logo" href="/#">
-      </a>
+ 
       
       <nav>
         <ul className="nav_links">

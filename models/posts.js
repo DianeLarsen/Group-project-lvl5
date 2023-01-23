@@ -20,6 +20,12 @@ const postsSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    img: {
+        type: String,
+    }, 
+    name: {
+        type: String
     }   
 })
 
