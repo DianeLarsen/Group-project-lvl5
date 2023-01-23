@@ -11,7 +11,7 @@ export default function Lots() {
       <img className="lot-map" src={lotMap} alt="lot map"/>
       <NewLot />
       </div>
-      <form className="lot-form-container">
+      <form className="lot-search-form">
         <label>Enter Lot Number</label>
         <input type="number" placeholder="lot #" />
       </form>
