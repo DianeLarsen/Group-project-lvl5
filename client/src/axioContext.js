@@ -4,6 +4,7 @@ import axios from "axios";
 const AxioContext = React.createContext();
 
 function AxioContextProvider(props) {
+ const btnRef = React.useRef (null)
   const [lots, setLots] = useState([]);
   const lotsIntial = {
     lastName: "",
@@ -28,6 +29,17 @@ function AxioContextProvider(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
+    lots.map((thelot) => {
+      console.log(thelot.lot)
+      if (name === "lot" && value == thelot.lot){
+        console.log("That lot is already used!")
+        setLotCard(lotsIntial)
+        return
+        //btnRef.current.disabled = false
+      } 
+      // eslint-disable-next-line
+    })
+    
     setLotCard((prevValue) => ({ ...prevValue, [name]: value }));
   }
 
@@ -58,7 +70,7 @@ console.log(newLots)
         nlot: lotCard.lot,
         nlastName: lotCard.lastName,
         ninfo: lotCard.info,
-        handleChange, handleSubmit} }      
+        handleChange, handleSubmit, btnRef} }      
     >
       {props.children}
     </AxioContext.Provider>
