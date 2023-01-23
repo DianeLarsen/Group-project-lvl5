@@ -193,6 +193,7 @@ footer {
   justify-content: space-between;
   width: 80%;
   flex-wrap: wrap;
+  align-items: center;
 }
 .allthelots{
   width: 100%;
@@ -214,18 +215,30 @@ footer {
     justify-content: center;
     padding: 10px;
 }
-
+/* .new-lot-form{
+  display: flex;
+  width: 40%;
+  justify-content: center;
+}
 .new-lot-form form{
+  
   display: flex;
   flex-direction: column;
-  margin-right:20px
-}
+  margin-right:20px;
+  justify-content: center;
+  align-items: center;
+} */
 
 .lot-map{
-  width: 800px;
+  width: 900px;
+  
 }
-@media  only screen and (max-width: 750px) {
+@media  only screen and (max-width: 899px) {
   .lot-map{
     width: 100%;
+    align-self: center;
   }
+  /* .new-lot-form{
+    width: 100%;
+  } */
 }
