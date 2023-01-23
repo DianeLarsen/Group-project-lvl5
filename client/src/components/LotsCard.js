@@ -15,9 +15,9 @@ export default function LotsCard(props) {
           } else {
             return (
               <div key={stuff._id} className="lotsCard-container">
-              <h2>{stuff.lot}</h2>
-              <h4>{stuff.lastName}</h4>
-              <p>{stuff.info}</p>
+              <h3>Lot #: {stuff.lot}</h3>
+              <h4>Family Name: {stuff.lastName}</h4>
+              <p>Family Info: {stuff.info}</p>
               </div>
            )
           }

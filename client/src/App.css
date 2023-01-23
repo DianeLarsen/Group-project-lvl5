@@ -189,13 +189,18 @@ footer {
 }
 .lot-form-map-container{
   display: inline-flex;
-  
+  margin: 20px;
+  justify-content: space-between;
+  width: 80%;
+  flex-wrap: wrap;
 }
 .allthelots{
   width: 100%;
   padding: 20px;
   display: inline-flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .lotsCard-container{
@@ -208,4 +213,19 @@ footer {
     flex-direction: column;
     justify-content: center;
     padding: 10px;
+}
+
+.new-lot-form form{
+  display: flex;
+  flex-direction: column;
+  margin-right:20px
+}
+
+.lot-map{
+  width: 800px;
+}
+@media  only screen and (max-width: 750px) {
+  .lot-map{
+    width: 100%;
+  }
 }
