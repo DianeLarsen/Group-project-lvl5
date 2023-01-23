@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { AxioContext } from "../axioContext";
 
 export default function LotsCard(props) {
-  const [lots, setLots] = React.useContext(AxioContext);
+  const {lots} = React.useContext(AxioContext);
   console.log(lots)
   return (
    
@@ -10,7 +10,7 @@ export default function LotsCard(props) {
     
       {lots.length > 0 &&
         lots.map((stuff) => {
-          if (stuff.lot === null) {
+          if (stuff.lot === "") {
             return;
           } else {
             return (

@@ -1,27 +1,63 @@
 import React from "react";
-import "./NewLot.css"
+import "./NewLot.css";
+import { AxioContext } from "../axioContext";
 
 export default function NewLot() {
+  
+
+  const { handleChange, handleSubmit, nlot, nlastName, ninfo } = React.useContext(AxioContext);
   return (
     <div className="new-lot-form">
-        <div className="title">Welcome</div>
+      <div className="title">Welcome</div>
       <div className="subtitle">Let's enter your lot!</div>
       <div className="input-container ic1">
-      <input id="lotNum" className="input" type="number" placeholder=" " />
+        <input
+          id="lotNum"
+          className="input"
+          type="number"
+          placeholder=" "
+          name="lot"
+          value={nlot}
+          onChange={handleChange}
+        />
         <div className="cut"></div>
-        <label for="lotNum" className="placeholder">Lot Number</label>
+        <label htmlFor="lotNum" className="placeholder">
+          Lot Number
+        </label>
       </div>
       <div className="input-container ic2">
-        <input id="lastname" className="input" type="text" placeholder=" " />
+        <input
+          id="lastname"
+          className="input"
+          type="text"
+          placeholder=" "
+          name="lastName"
+          value={nlastName}
+          onChange={handleChange}
+        />
         <div className="cut"></div>
-        <label for="lastname" className="placeholder">Family name</label>
+        <label htmlFor="lastname" className="placeholder">
+          Family name
+        </label>
       </div>
       <div className="input-container ic2">
-        <textarea id="info" className="input" type="text" placeholder=" " />
+        <textarea
+          id="info"
+          className="input"
+          type="text"
+          placeholder=" "
+          name="info"
+          value={ninfo}
+          onChange={handleChange}
+        />
         <div className="cut cut-short"></div>
-        <label for="info" className="placeholder">Family Info</label>
+        <label htmlFor="info" className="placeholder">
+          Family Info
+        </label>
       </div>
-      <button type="text" className="submit">submit</button>
+      <button type="text" className="submit" onClick={handleSubmit}>
+        submit
+      </button>
     </div>
   );
 }
