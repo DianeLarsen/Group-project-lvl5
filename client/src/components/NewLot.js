@@ -5,7 +5,7 @@ import { AxioContext } from "../axioContext";
 export default function NewLot() {
   
 
-  const { handleChange, handleSubmit, nlot, nlastName, ninfo } = React.useContext(AxioContext);
+  const { handleChange, handleSubmit, nlot, nlastName, ninfo, validInput } = React.useContext(AxioContext);
   return (
     <div className="new-lot-form">
       <div className="title">Welcome</div>
@@ -55,7 +55,7 @@ export default function NewLot() {
           Family Info
         </label>
       </div>
-      <button type="text" className="submit" onClick={handleSubmit}>
+      <button type="text" disabled={validInput} className="submit" onClick={handleSubmit}>
         submit
       </button>
     </div>

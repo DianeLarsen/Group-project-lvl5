@@ -1,9 +1,10 @@
 import React from "react";
 import { AxioContext } from "../axioContext";
+import "./LotsCard.css"
 
 export default function LotsCard(props) {
   const {lots} = React.useContext(AxioContext);
-  console.log(lots)
+  
   return (
    
     <div className="allthelots">
