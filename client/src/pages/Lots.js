@@ -1,3 +1,5 @@
+//still need to create an edit and delete option!
+
 import React from "react";
 import lotMap from "../assets/lot-map.png";
 import LotsCard from "../components/LotsCard.js";

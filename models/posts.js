@@ -26,6 +26,9 @@ const postsSchema = new Schema({
     }, 
     name: {
         type: String
+    },
+    timestamp: {
+        type: Number
     }   
 })
 
