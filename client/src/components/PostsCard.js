@@ -14,7 +14,8 @@ export default function LotsCard(props) {
 
   return (
     <div className="postCard-container">
-      <div className="card">
+      <h1>UNDER CONSTRUCTION - Please excuse our mess</h1>
+      {/* <div className="card">
           <div className="card__header">
             <img
               src="https://source.unsplash.com/600x400/?computer"
@@ -43,7 +44,7 @@ export default function LotsCard(props) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
     </div>
   );
 }

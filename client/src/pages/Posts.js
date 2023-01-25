@@ -5,7 +5,7 @@ export default function Posts() {
   return (
     <div className="posts">
      
-      <div className="card-container">
+      {/* <div className="card-container">
       
         <div className="card">
           <div className="card__header">
@@ -103,7 +103,7 @@ export default function Posts() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <PostsCard />
     </div>
   );

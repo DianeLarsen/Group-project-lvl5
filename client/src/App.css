@@ -5,11 +5,20 @@
   margin: 0;
   padding: 0;
 }
+#root{
+  width: 100%;
+}
 body {
   background-color: #24252a;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   margin-bottom: 100px;
+  width: 100%;
+}
+.App{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 header {
   display: flex;
@@ -17,6 +26,7 @@ header {
   align-items: center;
   padding: 10px 5%;
   background-color: rgb(119, 79, 79);
+  width: 100%
 }
 li,
 a {
@@ -187,58 +197,4 @@ footer {
 .user__info > small {
   color: #666;
 }
-.lot-form-map-container{
-  display: inline-flex;
-  margin: 20px;
-  justify-content: space-between;
-  width: 80%;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.allthelots{
-  width: 100%;
-  padding: 20px;
-  display: inline-flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
-.lotsCard-container{
-    height: 100px;
-    width: 200px;
-    background-color: #ece9e6;
-    color:rgba(0, 0, 0, 0.8);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-}
-/* .new-lot-form{
-  display: flex;
-  width: 40%;
-  justify-content: center;
-}
-.new-lot-form form{
-  
-  display: flex;
-  flex-direction: column;
-  margin-right:20px;
-  justify-content: center;
-  align-items: center;
-} */
-
-.lot-map{
-  width: 900px;
-  
-}
-@media  only screen and (max-width: 899px) {
-  .lot-map{
-    width: 100%;
-    align-self: center;
-  }
-  /* .new-lot-form{
-    width: 100%;
-  } */
-}

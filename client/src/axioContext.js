@@ -4,7 +4,9 @@ import axios from "axios";
 const AxioContext = React.createContext();
 
 function AxioContextProvider(props) {
- const btnRef = React.useRef (null)
+  const [validInput, setValidInput] = useState(true);
+  const [lotsUsed, setLotsUsed] = useState([]);
+  const [checkLot, setCheckLot] = useState(true);
   const [lots, setLots] = useState([]);
   const lotsIntial = {
     lastName: "",
@@ -12,13 +14,13 @@ function AxioContextProvider(props) {
     info: "",
   };
   const [lotCard, setLotCard] = useState(lotsIntial);
-  console.log(lotCard);
+  
   function getLot() {
     axios
       .get("/lots")
       .then((res) => {
         const newCard = res.data;
-        console.log(newCard);
+
         setLots(newCard);
       })
       .catch((error) => console.log(error.response.data.errMsg));
@@ -26,21 +28,51 @@ function AxioContextProvider(props) {
   useEffect(() => {
     getLot();
   }, []);
-
+  useEffect(() => {
+    lots.map((thelot) => {
+      return setLotsUsed((prev) => [...prev, thelot.lot]);
+      
+    });
+    // eslint-disable-next-line
+  }, [lots]);
+  useEffect(() => {
+    if (
+      lotCard.lot !== "" &&
+      lotCard.lastName !== "" &&
+      lotCard.info !== "" &&
+      checkLot === false
+    ) {
+      setValidInput(false);
+    } else {
+      setValidInput(true);
+    }
+    // eslint-disable-next-line
+  }, [lotCard]);
+useEffect(() => {
+  setCheckLot(false);
+  handleLotCheck(lotCard.lot)
+  // eslint-disable-next-line
+},[lotCard.lot])  
+function handleLotCheck(num){
+  lotsUsed.map((that) => {
+    if (Number(num) === Number(that) && Number(num) > 0 && Number(num) < 32) {
+      
+      return setCheckLot(true);
+     
+    }
+    return that
+  }
+  )
+}
   function handleChange(event) {
     const { name, value } = event.target;
-    lots.map((thelot) => {
-      console.log(thelot.lot)
-      if (name === "lot" && value == thelot.lot){
-        console.log("That lot is already used!")
-        setLotCard(lotsIntial)
-        return
-        //btnRef.current.disabled = false
-      } 
-      // eslint-disable-next-line
-    })
     
+    if (name === "lot") {
+      handleLotCheck(value)
+    }
+
     setLotCard((prevValue) => ({ ...prevValue, [name]: value }));
+    // eslint-disable-next-line
   }
 
   function handleSubmit(e) {
@@ -51,8 +83,8 @@ function AxioContextProvider(props) {
       lastName: lotCard.lastName,
       info: lotCard.info,
     };
-   
-console.log(newLots)
+
+    console.log(newLots);
     axios
       .post("/lots", newLots)
       .then((res) => {
@@ -70,7 +102,12 @@ console.log(newLots)
         nlot: lotCard.lot,
         nlastName: lotCard.lastName,
         ninfo: lotCard.info,
-        handleChange, handleSubmit, btnRef} }      
+        handleChange,
+        handleSubmit,
+        validInput,
+        checkLot,
+        lotsUsed
+      }}
     >
       {props.children}
     </AxioContext.Provider>

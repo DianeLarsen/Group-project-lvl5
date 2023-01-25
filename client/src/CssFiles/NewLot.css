@@ -1,12 +1,13 @@
 
-  
   .new-lot-form {
+    display: flex;
+    flex-direction: column;
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
     height: px;
     padding: 20px;
-    width: 460px;
+    width: 30%;
   }
   
   .title {
@@ -31,7 +32,7 @@
   }
   
   .ic1 {
-    margin-top: 40px;
+    margin-top: 30px;
   }
   
   .ic2 {
@@ -50,7 +51,7 @@
     padding: 4px 20px 0;
     width: 100%;
   }
-  
+ 
   .cut {
     background-color: #15172b;
     border-radius: 10px;
@@ -111,8 +112,31 @@
     text-align: center;
     width: 100%;
   }
+
+  .submit:disabled{
+    background-color: rgb(71, 71, 71);
+    color: rgb(90, 90, 90);
+  }
   
   .submit:active {
     background-color: #06b;
   }
   
+  @media  only screen and (max-width: 1160px) {
+    .new-lot-form {
+      width: 40%;
+      align-self: center;
+      margin-bottom: 20px;
+    }
+    /* .new-lot-form{
+      width: 100%;
+    } */
+  }
+  #info{
+    padding-top: 14px
+  }
+  .required{
+    color:rgb(90, 90, 90);
+    font-size: .8rem;
+    margin-top: 5px;
+  }
