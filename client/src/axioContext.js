@@ -30,9 +30,10 @@ function AxioContextProvider(props) {
   }, []);
   useEffect(() => {
     lots.map((thelot) => {
-      setLotsUsed((prev) => [...prev, thelot.lot]);
-      // eslint-disable-next-line
+      return setLotsUsed((prev) => [...prev, thelot.lot]);
+      
     });
+    // eslint-disable-next-line
   }, [lots]);
   useEffect(() => {
     if (
@@ -45,18 +46,21 @@ function AxioContextProvider(props) {
     } else {
       setValidInput(true);
     }
+    // eslint-disable-next-line
   }, [lotCard]);
 useEffect(() => {
   setCheckLot(false);
   handleLotCheck(lotCard.lot)
+  // eslint-disable-next-line
 },[lotCard.lot])  
 function handleLotCheck(num){
   lotsUsed.map((that) => {
-    if (num == that) {
-      console.log(`That lot is already used!`);
-      setCheckLot(true);
-     return
+    if (Number(num) === Number(that) && Number(num) > 0 && Number(num) < 32) {
+      
+      return setCheckLot(true);
+     
     }
+    return that
   }
   )
 }
@@ -101,7 +105,8 @@ function handleLotCheck(num){
         handleChange,
         handleSubmit,
         validInput,
-        checkLot
+        checkLot,
+        lotsUsed
       }}
     >
       {props.children}

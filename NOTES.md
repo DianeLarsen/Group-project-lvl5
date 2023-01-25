@@ -54,3 +54,5 @@ sudo mongod --dbpath ~/data/db
     -for mongodb (might be already running, do a get of localhost:9000/bounties to see)
 
 
+npm install jquery
+    -regarding highlights of map

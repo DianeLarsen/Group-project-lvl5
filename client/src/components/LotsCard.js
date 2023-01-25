@@ -1,6 +1,6 @@
 import React from "react";
 import { AxioContext } from "../axioContext";
-import "./LotsCard.css"
+import "../CssFiles/LotsCard.css"
 
 export default function LotsCard(props) {
   const {lots} = React.useContext(AxioContext);
@@ -11,18 +11,18 @@ export default function LotsCard(props) {
     
       {lots.length > 0 &&
         lots.map((stuff) => {
-          if (stuff.lot === "") {
-            return;
-          } else {
-            return (
+         return stuff.lot === "" ? <h1>No Lots Found</h1>  :
+            (
               <div key={stuff._id} className="lotsCard-container">
               <h3>Lot #: {stuff.lot}</h3>
               <h4>Family Name: {stuff.lastName}</h4>
               <p>Family Info: {stuff.info}</p>
               </div>
            )
-          }
-        })}
+            
+             
+            }
+        )}
     
     </div>
   );

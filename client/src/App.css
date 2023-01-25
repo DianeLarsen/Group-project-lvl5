@@ -197,3 +197,11 @@ footer {
 .user__info > small {
   color: #666;
 }
+area:hover{
+  background-color: #2f80ed;
+}
+.map-overlay{
+  /* position: absolute; */
+  background-color: rgba(102, 102, 102, 0.281);
+  width: fit-content;
+}
