@@ -21,6 +21,7 @@ export default function NewLot() {
           value={nlot}
           onChange={handleChange}
           min="1" max="32"
+          required
         />
         <div className="cut" style={checkLot ? {width: "170px"}: {width: "85px"}}></div>
         {checkLot ? <label htmlFor="lotNum" className="placeholder">
@@ -38,6 +39,7 @@ export default function NewLot() {
           name="lastName"
           value={nlastName}
           onChange={handleChange}
+          required
         />
         <div className="cut"></div>
         <label htmlFor="lastname" className="placeholder">
@@ -53,6 +55,7 @@ export default function NewLot() {
           name="info"
           value={ninfo}
           onChange={handleChange}
+          required
         />
         <div className="cut cut-short"></div>
         <label htmlFor="info" className="placeholder">

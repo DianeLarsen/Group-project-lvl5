@@ -24,6 +24,8 @@ postRouter.post("/", (req, res, next) => {
         return res.status(201).send(savedPost)
     })
 })
+
+
 // Update
 postRouter.put("/:postID", (req, res) => {
     const postID = req.params.postID

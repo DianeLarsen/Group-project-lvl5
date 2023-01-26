@@ -6,7 +6,8 @@
     flex-wrap: wrap;
     align-items: center;
   }
-  .lot-form-map-container h1 {
+
+  .map-container h1 {
     display: inline-flex;
     margin: 30px 50px;
     justify-content: space-between;
@@ -14,7 +15,7 @@
     flex-wrap: wrap;
     align-items: center;
   }
-  .lot-form-map-container button {
+  .map-container button {
     border-radius: 5px;
     padding: 3px;
     background-color:#ece9e6 ;
@@ -44,28 +45,15 @@
       overflow-y: auto;
   }
 
-  
-  /* .new-lot-form{
-    display: flex;
-    width: 40%;
-    justify-content: center;
-  }
-  .new-lot-form form{
-    
-    display: flex;
-    flex-direction: column;
-    margin-right:20px;
-    justify-content: center;
-    align-items: center;
-  } */
-  
-  .lot-map{
-    min-width: 50%;
-    margin-right: 20px;
-    
-  }
+
+
   @media  only screen and (max-width: 1160px) {
-    .lot-map{
+    .map-container{
+    
+      overflow: auto;
+    }
+   
+    .maparea{
       width: 100%;
       align-self: center;
       margin-bottom: 20px;

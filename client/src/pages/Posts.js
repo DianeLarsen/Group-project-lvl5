@@ -5,7 +5,7 @@ import NewPost from "../components/NewPost.js";
 
 
 export default function Posts() {
-  const [posts, setPosts] = React.useState([])
+  const [posts, setPosts] = useState([])
   console.log(posts)
   function getPost() {
     axios
@@ -25,7 +25,7 @@ export default function Posts() {
     <div className="posts">
       <NewPost getPost={getPost}/>
       {posts.map(showposts => <PostsCard key={showposts._id}posts={showposts} />)}
-      
+      <div className="spacer-div"></div>
     </div>
   );
 }

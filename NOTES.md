@@ -21,6 +21,9 @@ create routes folder
 npm install mongoose
     for mongoose
 
+for storage of images:
+npm install cors multer multer-gridfs-storage 
+
 /////Setting up frontEnd/////
 
     create client folder

@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const http = require ("http").createServer(app)
+const port = process.env.PORT || 9000;
+
 
 app.use(express.json());
 app.use(morgan("dev"));
-
 
 mongoose.connect("mongodb://127.0.0.1:27017/neighbordb", (err) => {
   if (err) {
@@ -25,4 +27,4 @@ app.use((err, req, res, next) => {
   return res.send({ errMsg: err.message });
 });
 
-app.listen(9000, () => console.log("The server is running on Port 9000"));
+http.listen(port, () => console.log(`The server is running on Port ${port}`));

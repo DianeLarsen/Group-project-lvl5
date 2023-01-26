@@ -7,7 +7,9 @@
     box-sizing: border-box;
     height: px;
     padding: 20px;
+   
     width: 30%;
+    min-width: 350px;
   }
   
   .title {
@@ -124,6 +126,7 @@
   
   @media  only screen and (max-width: 1160px) {
     .new-lot-form {
+      min-width: 350px;
       width: 40%;
       align-self: center;
       margin-bottom: 20px;

@@ -20,22 +20,26 @@ export default function Lots() {
     setLotID(target)
     console.log(lotID)
   }
+
   return (
+    
     <div className="lots">
     
       <div className="lot-form-map-container">
-      <h1>Click on a lot below for information</h1>
+        <div className="map-container">
+      <h1>Click on a lot for information</h1>
       <button className="show-all" onClick={() => setShowAll((prev) => !prev)}>
         {showAll ? "Hide all" : "Show all"}
       </button>
+      <div className="map">
         <img
           src={lotMap}
           alt="lot map"
-          className="maparea"
-          useMap="#image-map"
+          className="maparea img-responsive"
+          useMap="#usemap"
         />
 
-        <map name="image-map">
+        <map name="usemap" id="usemap">
           <area
             target="_blank"
             alt="Lot 1"
@@ -337,7 +341,8 @@ export default function Lots() {
             onClick={() => setTarget(33)}
           />
         </map>
-        
+        </div>
+        </div>
         {itemTarget ? <LotsCard lotID={lotID} showAll={showAll}/> : <NewLot />}
       </div>
 

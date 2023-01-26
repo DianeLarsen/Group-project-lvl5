@@ -1,4 +1,3 @@
-import { PromiseProvider } from "mongoose";
 import React from "react";
 import "../CssFiles/NewPost.css";
 import axios from "axios"
@@ -14,14 +13,21 @@ export default function NewPost(props) {
         name: ""
       };
 const [newPost, setNewPost] = React.useState(postInitial)
+console.log(newPost)
 
 
 function handleChange(event) {
     const { name, value } = event.target;
+    if (name === "img"){
+        onImageLoad(img) 
+
+    }
     setNewPost((prevValue) => ({ ...prevValue, [name]: value }));
     // eslint-disable-next-line
   }
-
+function onImageLoad(img){
+    const reader = new FileReader();
+}
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -45,11 +51,13 @@ function handleChange(event) {
       setNewPost(postInitial);
   }
 
+
+
   return (
     <div className="new-post-form">
-      <div className="title">Lot does not exist</div>
-      <div className="subtitle">Let's enter your lot!</div>
-      <p className="required">all fields required</p>
+      <div className="title">Complete a new post</div>
+      
+      <p className="required">* all fields required</p>
       <div className="input-container ic1">
         <input
           id="lotNum"
@@ -60,10 +68,11 @@ function handleChange(event) {
           value={newPost.lot}
           onChange={handleChange}
           min="1" max="32"
+          required
         />
         <div className="cut" ></div>
          <label htmlFor="lotNum" className="placeholder">
-          Lot
+          * Lot
         </label>
       </div>
       <div className="input-container ic2">
@@ -75,13 +84,14 @@ function handleChange(event) {
           name="title"
           value={newPost.title}
           onChange={handleChange}
+          required
         />
         <div className="cut"></div>
         <label htmlFor="lotNum" className="placeholder">
-          Title
+        * Title
         </label>
       </div>
-      <div className="input-container ic2">
+      <div className="input-container ic3">
         <input
           id="type"
           className="input"
@@ -90,13 +100,14 @@ function handleChange(event) {
           name="type"
           value={newPost.type}
           onChange={handleChange}
+          required
         />
         <div className="cut"></div>
         <label htmlFor="lotNum" className="placeholder">
-          Type
+        * Type
         </label>
       </div>
-      <div className="input-container ic2">
+      <div className="input-container ic4">
         <textarea
           id="description"
           className="input"
@@ -105,17 +116,19 @@ function handleChange(event) {
           name="description"
           value={newPost.description}
           onChange={handleChange}
+          required
         />
         <div className="cut"></div>
         <label htmlFor="lastname" className="placeholder">
-          Description
+        * Description
         </label>
       </div>
-      <div className="input-container ic2">
+      {/* <div className="input-container ic5">
         <input
-          id="info"
+          id="info image_input"
           className="input"
-          type="text"
+          accept="image/png, image/jpg"
+          type="file"
           placeholder=" "
           name="img"
           value={newPost.img}
@@ -125,8 +138,9 @@ function handleChange(event) {
         <label htmlFor="info" className="placeholder">
           Image
         </label>
-      </div>
-      <div className="input-container ic2">
+      </div> */}
+      {newPost.img && <div id="display_image"></div>}
+      <div className="input-container ic6">
         <input
           id="info"
           className="input"
