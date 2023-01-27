@@ -27,12 +27,20 @@ postRouter.post("/", (req, res, next) => {
 
 
 // Update
-postRouter.put("/:postID", (req, res) => {
-    const postID = req.params.postID
-    const updatedObject = req.body
-    const postIndex = Posts.findIndex(posts => posts._id === postID)
-    const updatedPost = Object.assign(Posts[postIndex], updatedObject)
-    res.status(202).send(updatedPost)
+postRouter.put("/:postID", (req, res, next) => {
+    Posts.findOneAndUpdate(
+     { _id: req.params.postID }, 
+     req.body, 
+     { new: true },
+     (err, updatedPost) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(updatedPost)
+     }  
+    )
+   
 })
 
 // Delete

@@ -10,7 +10,7 @@ export default function NewLot() {
     <div className="new-lot-form">
       <div className="title">Lot does not exist</div>
       <div className="subtitle">Let's enter your lot!</div>
-      <p className="required">all fields required</p>
+      <p className="required"> * all fields required</p>
       <div className="input-container ic1">
         <input
           id="lotNum"
@@ -21,13 +21,14 @@ export default function NewLot() {
           value={nlot}
           onChange={handleChange}
           min="1" max="32"
+          style={checkLot ? {width: "220px"}: {width: "150px"}}
           required
         />
-        <div className="cut" style={checkLot ? {width: "170px"}: {width: "85px"}}></div>
-        {checkLot ? <label htmlFor="lotNum" className="placeholder">
-          Lot Number (already in use)
+        <div className="cut" style={checkLot ? {width: "180px"}: {width: "85px"}}></div>
+        {checkLot ? <label htmlFor="lotNum" className="placeholder"style={checkLot && {color: "red", width: "250px"}}>
+         * Lot Number (already in use)
         </label> : <label htmlFor="lotNum" className="placeholder">
-          Lot Number
+          * Lot Number
         </label>}
       </div>
       <div className="input-container ic2">
@@ -43,7 +44,7 @@ export default function NewLot() {
         />
         <div className="cut"></div>
         <label htmlFor="lastname" className="placeholder">
-          Family name
+        * Family name
         </label>
       </div>
       <div className="input-container ic2">
@@ -59,7 +60,7 @@ export default function NewLot() {
         />
         <div className="cut cut-short"></div>
         <label htmlFor="info" className="placeholder">
-          Family Info
+        * Family Info
         </label>
       </div>
       <button type="text" disabled={validInput} className="submit" onClick={handleSubmit}>

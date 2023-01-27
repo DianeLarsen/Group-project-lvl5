@@ -2,11 +2,20 @@ import PostsCard from "../components/PostsCard.js";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewPost from "../components/NewPost.js";
-
+import "../CssFiles/PostCard.css";
 
 export default function Posts() {
-  const [posts, setPosts] = useState([])
-  console.log(posts)
+  const [posts, setPosts] = useState([]);
+  const postInitial = {
+    lot: "",
+    title: "",
+    type: "",
+    description: "",
+    img: "",
+    name: "",
+  };
+  const [newPost, setNewPost] = React.useState(postInitial);
+  //console.log(posts)
   function getPost() {
     axios
       .get("/posts")
@@ -27,27 +36,82 @@ export default function Posts() {
       .catch((error) => console.log(error));
   }
 
-  function handleFilter(e){
-    if(e.target.value === "reset"){
-      getPost()
+  function handleFilter(e) {
+    if (e.target.value === "reset") {
+      getPost();
     } else {
-    axios.get(`/posts/search/type?type=${e.target.value}`)
-    .then(res => setPosts(res.data))
-    .catch(err => console.log(err))
+      axios
+        .get(`/posts/search/type?type=${e.target.value}`)
+        .then((res) => setPosts(res.data))
+        .catch((err) => console.log(err));
     }
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const addPosts = {
+      lot: newPost.lot,
+      title: newPost.title,
+      type: newPost.type,
+      description: newPost.description,
+      img: newPost.img || "",
+      name: newPost.lastName || "",
+    };
+
+    console.log(newPost);
+    axios
+      .post("/posts", addPosts)
+      .then((res) => {
+        getPost(res);
+      })
+      .catch((err) => console.log(err));
+
+    setNewPost(postInitial);
+  }
+  function editPosts(updates, postID) {
+    
+    axios
+      .put(`/posts/${postID}`, updates)
+      .then((res) =>
+        setPosts((prevdata) =>
+          prevdata.map((post) => (post._id !== postID ? post : res.data))
+        )
+      )
+      .catch((error) => console.log(error));
   }
   return (
     <div className="posts">
-      
-      <NewPost getPost={getPost}/>
-      <select onChange={handleFilter} className="filter-form">
-        <option value="reset">All Posts</option>
-        <option value="help Wanted">Help Wanted</option>
-        <option value="willing to work">Willing to work</option>
-        <option value="event">Event</option>
-        <option value="missing">Missing</option>
-      </select>
-      {posts.map(showposts => <PostsCard  deletePost={deletePost} key={showposts._id}posts={showposts} id={showposts._id}/>)}
+      <div className="new-postcard">
+        <NewPost
+          getPost={getPost}
+          newPost={newPost}
+          setNewPost={setNewPost}
+          handleSubmit={handleSubmit}
+        />
+        <div className="filter-posts">
+          <select onChange={handleFilter} className="filter-form">
+            <option value="reset">All Posts</option>
+            <option value="help Wanted">Help Wanted</option>
+            <option value="willing to work">Willing to work</option>
+            <option value="event">Event</option>
+            <option value="missing">Missing</option>
+          </select>
+          <div className="post-wrapper">
+            {posts.map((showposts) => (
+              <PostsCard
+                newPost={newPost}
+                setNewPost={setNewPost}
+                deletePost={deletePost}
+                key={showposts._id}
+                posts={showposts}
+                id={showposts._id}
+                handleSubmit={handleSubmit}
+                editPosts={editPosts}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="spacer-div"></div>
     </div>
   );

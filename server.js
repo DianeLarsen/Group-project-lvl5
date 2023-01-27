@@ -3,7 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const http = require ("http").createServer(app)
-const port = process.env.PORT || 9000;
+const port = 9000;
 
 
 app.use(express.json());
@@ -27,4 +27,4 @@ app.use((err, req, res, next) => {
   return res.send({ errMsg: err.message });
 });
 
-http.listen(port, () => console.log(`The server is running on Port ${port}`));
+app.listen(port, () => console.log(`The server is running on Port ${port}`));

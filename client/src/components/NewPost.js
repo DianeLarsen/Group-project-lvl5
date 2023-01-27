@@ -1,74 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CssFiles/NewPost.css";
-import axios from "axios"
-
 
 export default function NewPost(props) {
-    const postInitial = {
-        lot: "",
-        title: "",
-        type: "",
-        description: "",
-        img: "",
-        name: ""
-      };
-const [newPost, setNewPost] = React.useState(postInitial)
-console.log(newPost)
+  const { newPost, setNewPost, handleSubmit } = props;
 
+  const [validInput, setValidInput] = useState(true);
+  const [checkLot, setCheckLot] = useState(true);
+  console.log();
+  function handleLotCheck(num) {
+    if (isNaN(newPost.lot)) {
+      setCheckLot(true);
+    } else {
+      setCheckLot(false);
+    }
+  }
+  useEffect(() => {
+    setCheckLot(false);
+    handleLotCheck(newPost.lot);
 
-function handleChange(event) {
+    // eslint-disable-next-line
+  }, [newPost.lot]);
+  useEffect(() => {
+    if (
+      !isNaN(newPost.lot) &&
+      newPost.title !== "" &&
+      newPost.type !== "" &&
+      newPost.description !== ""
+    ) {
+      setValidInput(false);
+    } else {
+      setValidInput(true);
+    }
+
+    // eslint-disable-next-line
+  }, [newPost]);
+  function handleChange(event) {
     const { name, value } = event.target;
 
     setNewPost((prevValue) => ({ ...prevValue, [name]: value }));
     // eslint-disable-next-line
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const addPosts = {
-      lot: newPost.lot,
-      title: newPost.title,
-      type: newPost.type,
-      description: newPost.description,
-      img: newPost.img || "",
-      name: newPost.lastName || ""
-    };
-
-    console.log(newPost);
-    axios
-      .post("/posts", addPosts)
-      .then((res) => {
-        props.getPost(res);
-      })
-      .catch((err) => console.log(err));
-
-      setNewPost(postInitial);
-  }
-
-
-
   return (
     <div className="new-post-form">
       <div className="title">Complete a new post</div>
-      
+
       <p className="required">* all fields required</p>
       <div className="input-container ic1">
         <input
           id="lotNum"
+          title="Only numbers allowed"
           className="input"
           type="tel"
           placeholder=" "
           name="lot"
           value={newPost.lot}
           onChange={handleChange}
-          min="1" max="32"
+          pattern="\d*"
+          min="1"
+          max="32"
           required
         />
-        <div className="cut" ></div>
-         <label htmlFor="lotNum" className="placeholder">
-          * Lot
-        </label>
+        <div
+          className="cut"
+          style={checkLot ? { width: "100px" } : { width: "85px" }}
+        ></div>
+        {checkLot ? (
+          <label
+            htmlFor="lotNum"
+            className="placeholder"
+            style={checkLot && { color: "red" }}
+          >
+            use a valid lot #
+          </label>
+        ) : (
+          <label htmlFor="lotNum" className="placeholder">
+            Lot #
+          </label>
+        )}
       </div>
       <div className="input-container ic2">
         <input
@@ -83,24 +92,22 @@ function handleChange(event) {
         />
         <div className="cut"></div>
         <label htmlFor="lotNum" className="placeholder">
-        * Title
+          * Title
         </label>
       </div>
       <div className="input-container ic3">
-        <input
-          id="type"
-          className="input"
-          type="text"
-          placeholder=" "
-          name="type"
-          value={newPost.type}
+        <select
           onChange={handleChange}
-          required
-        />
-        <div className="cut"></div>
-        <label htmlFor="lotNum" className="placeholder">
-        * Type
-        </label>
+          name="type"
+          className="filter-form input"
+        >
+          <option>* Type</option>
+          <option value="Help Wanted">Help Wanted</option>
+          <option value="Willing to Work">Willing to work</option>
+          <option value="Event">Event</option>
+          <option value="Missing">Missing</option>
+          <option value="Alert">Alert</option>
+        </select>
       </div>
       <div className="input-container ic4">
         <textarea
@@ -115,7 +122,7 @@ function handleChange(event) {
         />
         <div className="cut"></div>
         <label htmlFor="lastname" className="placeholder">
-        * Description
+          * Description
         </label>
       </div>
       <div className="input-container ic5">
@@ -123,8 +130,9 @@ function handleChange(event) {
           id="info image_input"
           className="input"
           accept="image/png, image/jpg"
-          type="text"
+          type="url"
           placeholder=" "
+          pattern="https://.*"
           name="img"
           value={newPost.img}
           onChange={handleChange}
@@ -150,11 +158,14 @@ function handleChange(event) {
           Name
         </label>
       </div>
-      <button type="text" disabled={false} className="submit" onClick={handleSubmit}>
-        Submit
-        {/* {!validInput ? "Submit" : "Missing or Incorrect Fields"} */}
+      <button
+        type="text"
+        disabled={validInput}
+        className="submit"
+        onClick={handleSubmit}
+      >
+        {!validInput ? "Submit" : "Missing or Incorrect Fields"}
       </button>
     </div>
   );
 }
-

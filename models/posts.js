@@ -18,16 +18,18 @@ const postsSchema = new Schema({
     type: String,
     required: true,
   },
-//   img: {
-//     data: Buffer,
-//     contentType: String,
-//   },
+  img: {
+    type: String,
+  },
   name: {
     type: String,
   },
   timestamp: {
     type: Number,
   },
+  edited: {
+    type: Boolean,
+  }
 });
 
 module.exports = mongoose.model("Posts", postsSchema);

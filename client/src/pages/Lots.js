@@ -13,7 +13,7 @@ export default function Lots() {
   const { lotsUsed } = React.useContext(AxioContext);
   const [itemTarget, setItemTarget] = React.useState(true);
   const [lotID, setLotID] = React.useState("");
-  console.log(itemTarget)
+
   const [showAll, setShowAll] = React.useState(false);
   function setTarget(target) {
     setItemTarget(lotsUsed.some((element) => element === target));

@@ -5,8 +5,7 @@ import "../CssFiles/LotsCard.css";
 export default function LotsCard(props) {
   const { lots } = React.useContext(AxioContext);
 
- 
-  console.log(props.lotID);
+
   return (
     <div className="allthelots">
       
