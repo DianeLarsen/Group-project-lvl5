@@ -35,5 +35,27 @@ postRouter.put("/:postID", (req, res) => {
     res.status(202).send(updatedPost)
 })
 
+// Delete
+postRouter.delete("/:postID", (req, res, next) => {
+    Posts.findOneAndDelete({ _id: req.params.postID }, (err, deletedItem) => {
+      if (err) {
+        res.status(500);
+        return next(err);
+      }
+      return res
+        .status(200)
+        .send(`Successfully deleted item ${deletedItem.title}!`);
+    });
+});
 
+// Get by type
+postRouter.get("/search/type", (req, res, next) => {
+    Posts.find({ type: req.query.type }, (err, posts) => {
+        if (err) {
+            res.status(500);
+            return next(err);
+          }
+          return res.status(200).send(posts)
+    })
+})
 module.exports = postRouter;

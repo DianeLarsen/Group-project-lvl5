@@ -20,11 +20,34 @@ export default function Posts() {
   useEffect(() => {
     getPost();
   }, []);
+  function deletePost(postID) {
+    axios
+      .delete(`/posts/${postID}`)
+      .then((res) => getPost(res))
+      .catch((error) => console.log(error));
+  }
 
+  function handleFilter(e){
+    if(e.target.value === "reset"){
+      getPost()
+    } else {
+    axios.get(`/posts/search/type?type=${e.target.value}`)
+    .then(res => setPosts(res.data))
+    .catch(err => console.log(err))
+    }
+  }
   return (
     <div className="posts">
+      
       <NewPost getPost={getPost}/>
-      {posts.map(showposts => <PostsCard key={showposts._id}posts={showposts} />)}
+      <select onChange={handleFilter} className="filter-form">
+        <option value="reset">All Posts</option>
+        <option value="help Wanted">Help Wanted</option>
+        <option value="willing to work">Willing to work</option>
+        <option value="event">Event</option>
+        <option value="missing">Missing</option>
+      </select>
+      {posts.map(showposts => <PostsCard  deletePost={deletePost} key={showposts._id}posts={showposts} id={showposts._id}/>)}
       <div className="spacer-div"></div>
     </div>
   );

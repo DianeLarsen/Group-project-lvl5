@@ -18,16 +18,11 @@ console.log(newPost)
 
 function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "img"){
-        onImageLoad(img) 
 
-    }
     setNewPost((prevValue) => ({ ...prevValue, [name]: value }));
     // eslint-disable-next-line
   }
-function onImageLoad(img){
-    const reader = new FileReader();
-}
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -123,12 +118,12 @@ function onImageLoad(img){
         * Description
         </label>
       </div>
-      {/* <div className="input-container ic5">
+      <div className="input-container ic5">
         <input
           id="info image_input"
           className="input"
           accept="image/png, image/jpg"
-          type="file"
+          type="text"
           placeholder=" "
           name="img"
           value={newPost.img}
@@ -136,9 +131,9 @@ function onImageLoad(img){
         />
         <div className="cut cut-short"></div>
         <label htmlFor="info" className="placeholder">
-          Image
+          Image (URL only)
         </label>
-      </div> */}
+      </div>
       {newPost.img && <div id="display_image"></div>}
       <div className="input-container ic6">
         <input
