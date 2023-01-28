@@ -37,10 +37,10 @@ if(posts.type === "Help Wanted"){
                 <button
                   className="btn"
                   onClick={() => {
-                    {
+                  
                       
                       setEditToggle((prevToggle) => !prevToggle)
-                    };
+                    
                   }}
                 >
                   <i className="fa-solid fa-pencil"></i>

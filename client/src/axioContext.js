@@ -94,7 +94,17 @@ function handleLotCheck(num){
 
     setLotCard(lotsIntial);
   }
-
+  function editLots(updates, postID) {
+    
+    axios
+      .put(`/lots/${postID}`, updates)
+      .then((res) =>
+        setLots((prevdata) =>
+          prevdata.map((post) => (post._id !== postID ? post : res.data))
+        )
+      )
+      .catch((error) => console.log(error));
+  }
   return (
     <AxioContext.Provider
       value={{
@@ -106,7 +116,8 @@ function handleLotCheck(num){
         handleSubmit,
         validInput,
         checkLot,
-        lotsUsed
+        lotsUsed,
+        editLots
       }}
     >
       {props.children}

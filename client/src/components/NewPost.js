@@ -6,9 +6,12 @@ export default function NewPost(props) {
 
   const [validInput, setValidInput] = useState(true);
   const [checkLot, setCheckLot] = useState(true);
-  console.log();
+  console.log(validInput);
+  console.log(newPost);
+  console.log(!checkLot);
+
   function handleLotCheck(num) {
-    if (isNaN(newPost.lot)) {
+    if (isNaN(num)) {
       setCheckLot(true);
     } else {
       setCheckLot(false);
@@ -22,7 +25,7 @@ export default function NewPost(props) {
   }, [newPost.lot]);
   useEffect(() => {
     if (
-      !isNaN(newPost.lot) &&
+      !checkLot &&
       newPost.title !== "" &&
       newPost.type !== "" &&
       newPost.description !== ""
@@ -100,6 +103,7 @@ export default function NewPost(props) {
           onChange={handleChange}
           name="type"
           className="filter-form input"
+          value={newPost.type}
         >
           <option>* Type</option>
           <option value="Help Wanted">Help Wanted</option>

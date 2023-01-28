@@ -86,20 +86,18 @@ export default function EditPost(props) {
         <button
           className="save-btn"
           onClick={() => {
-            
             editPosts(newPost, id);
             console.log(newPost, id);
             setEditToggle((prevToggle) => !prevToggle);
-            
-          }}
+                    }}
         >
-          Save
+          <i class="fa-solid fa-check"></i>
         </button>
         <button
           className="cancel-btn"
           onClick={() => setEditToggle((prevToggle) => !prevToggle)}
         >
-          Cancel
+           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
     </div>

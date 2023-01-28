@@ -59,3 +59,9 @@ sudo mongod --dbpath ~/data/db
 
 npm install jquery
     -regarding highlights of map
+
+
+
+
+    //  <button className="show-form"
+// onClick={() => setShowForm((prev) => !prev)}>{showForm ? "Hide Form" : "Enter a new Lot"}</button>
