@@ -1,6 +1,6 @@
 //still need to create an edit and delete option!
 
-import React from "react";
+import React, { useEffect } from "react";
 import lotMap from "../assets/lot-map.png";
 import LotsCard from "../components/LotsCard.js";
 import NewLot from "../components/NewLot.js";
@@ -12,18 +12,31 @@ export default function Lots() {
   const [lotID, setLotID] = React.useState("");
   const [showForm, setShowForm] = React.useState(false);
   const [showAll, setShowAll] = React.useState(false);
+  // console.log("itemTarget:  " + itemTarget +"  showForm:  " + showForm + "  showAll:  " + showAll)
+  // console.log("lotsUsed:  " + lotsUsed)
+  // console.log("lotID:  " + lotID)
   function setTarget(target) {
     
+    // console.log("does clicked match exist?  " + lotsUsed.some((element) => element === target))
     setItemTarget(lotsUsed.some((element) => element === target));
     setLotID(target);
     
   }
+useEffect(()=>{if (itemTarget){ 
+  setShowForm(false)
+} else if(!itemTarget){
+  setShowForm(true)
+}
+}, [itemTarget])
+  
+
 
   return (
     <div className="lots">
       <div className="lot-form-map-container">
         <div className="map-container">
           <h1>Click on a lot for information</h1>
+          <div>
           <button
             className="show-all"
             onClick={() => setShowAll((prev) => !prev)}
@@ -32,6 +45,7 @@ export default function Lots() {
           </button>
           <button className="show-form"
             onClick={() => setShowForm((prev) => !prev)}>{showForm ? "Hide Form" : "Enter a new Lot"}</button>
+            </div>
           <div className="map">
             <img
               src={lotMap}
@@ -344,9 +358,8 @@ export default function Lots() {
           </div>
         </div>
         
-        {(showForm || !itemTarget) && <NewLot />}
-        {itemTarget && <LotsCard lotID={lotID} showAll={showAll} />}
-        
+        {showForm  && <NewLot />}
+        <LotsCard lotID={lotID} showAll={showAll} />        
       </div>
     </div>
   );

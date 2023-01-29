@@ -35,9 +35,7 @@ export default function LotsCard(props) {
                     <button
                       className="btn"
                       onClick={() => {
-                        
-                          setEditToggle((prevToggle) => !prevToggle);
-                        
+                        setEditToggle((prevToggle) => !prevToggle);
                       }}
                     >
                       <i className="fa-solid fa-pencil"></i>
@@ -51,7 +49,8 @@ export default function LotsCard(props) {
               </div>
             );
           })
-        : lots
+          // if showAll === false and show.lot matches lotID then show only the lots that match 
+        : lots 
             .filter((show) => Number(show.lot) === Number(props.lotID))
             .map((filteredlot) => (
               <div key={filteredlot._id} className="lotsCard-container">
@@ -62,9 +61,7 @@ export default function LotsCard(props) {
                     <button
                       className="btn"
                       onClick={() => {
-                        
-                          setEditToggle((prevToggle) => !prevToggle);
-                       
+                        setEditToggle((prevToggle) => !prevToggle);
                       }}
                     >
                       <i className="fa-solid fa-pencil"></i>

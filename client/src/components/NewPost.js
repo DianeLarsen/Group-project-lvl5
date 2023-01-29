@@ -25,6 +25,8 @@ export default function NewPost(props) {
   }, [newPost.lot]);
   useEffect(() => {
     if (
+      newPost.lot > 0 &&
+      newPost.lot < 33 &&
       !checkLot &&
       newPost.title !== "" &&
       newPost.type !== "" &&

@@ -23,6 +23,8 @@ export default function Home() {
       <div className="news-container">
         <h2>News and Events!</h2>
         <h3>**********COMING SOON**********</h3>
+  
+       
       </div>
     </div>
   );
