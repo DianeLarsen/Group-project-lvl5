@@ -9,9 +9,9 @@ function AxioContextProvider(props) {
   const [checkLot, setCheckLot] = useState(true);
   const [lots, setLots] = useState([]);
   const lotsIntial = {
-    lastName: "",
-    lot: "",
-    info: "",
+    lastName: lots.lastName || "",
+    lot: lots.lot || "",
+    info: lots.info || "",
   };
   const [lotCard, setLotCard] = useState(lotsIntial);
   
@@ -117,7 +117,8 @@ function handleLotCheck(num){
         validInput,
         checkLot,
         lotsUsed,
-        editLots
+        editLots,
+        newLot:lotCard
       }}
     >
       {props.children}

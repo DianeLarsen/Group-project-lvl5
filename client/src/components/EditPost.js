@@ -91,13 +91,13 @@ export default function EditPost(props) {
             setEditToggle((prevToggle) => !prevToggle);
                     }}
         >
-          <i class="fa-solid fa-check"></i>
+          <i className="fa-solid fa-check"></i>
         </button>
         <button
           className="cancel-btn"
           onClick={() => setEditToggle((prevToggle) => !prevToggle)}
         >
-           <i class="fa-solid fa-xmark"></i>
+           <i className="fa-solid fa-xmark"></i>
         </button>
       </div>
     </div>

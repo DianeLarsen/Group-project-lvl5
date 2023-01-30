@@ -7,29 +7,26 @@ import NewLot from "../components/NewLot.js";
 import { AxioContext } from "../axioContext";
 
 export default function Lots() {
-  const { lotsUsed } = React.useContext(AxioContext);
+  const { lotsUsed, lots } = React.useContext(AxioContext);
   const [itemTarget, setItemTarget] = React.useState(true);
   const [lotID, setLotID] = React.useState("");
   const [showForm, setShowForm] = React.useState(false);
   const [showAll, setShowAll] = React.useState(false);
   // console.log("itemTarget:  " + itemTarget +"  showForm:  " + showForm + "  showAll:  " + showAll)
   // console.log("lotsUsed:  " + lotsUsed)
-  // console.log("lotID:  " + lotID)
+   console.log("lotID:  " + lotID)
   function setTarget(target) {
-    
     // console.log("does clicked match exist?  " + lotsUsed.some((element) => element === target))
     setItemTarget(lotsUsed.some((element) => element === target));
     setLotID(target);
-    
   }
-useEffect(()=>{if (itemTarget){ 
-  setShowForm(false)
-} else if(!itemTarget){
-  setShowForm(true)
-}
-}, [itemTarget])
-  
-
+  useEffect(() => {
+    if (itemTarget) {
+      setShowForm(false);
+    } else if (!itemTarget) {
+      setShowForm(true);
+    }
+  }, [itemTarget]);
 
   return (
     <div className="lots">
@@ -37,15 +34,19 @@ useEffect(()=>{if (itemTarget){
         <div className="map-container">
           <h1>Click on a lot for information</h1>
           <div>
-          <button
-            className="show-all"
-            onClick={() => setShowAll((prev) => !prev)}
-          >
-            {showAll ? "Hide all" : "Show all Lots"}
-          </button>
-          <button className="show-form"
-            onClick={() => setShowForm((prev) => !prev)}>{showForm ? "Hide Form" : "Enter a new Lot"}</button>
-            </div>
+            <button
+              className="show-all"
+              onClick={() => setShowAll((prev) => !prev)}
+            >
+              {showAll ? "Hide all" : "Show all Lots"}
+            </button>
+            <button
+              className="show-form"
+              onClick={() => setShowForm((prev) => !prev)}
+            >
+              {showForm ? "Hide Form" : "Enter a new Lot"}
+            </button>
+          </div>
           <div className="map">
             <img
               src={lotMap}
@@ -357,9 +358,30 @@ useEffect(()=>{if (itemTarget){
             </map>
           </div>
         </div>
-        
-        {showForm  && <NewLot />}
-        <LotsCard lotID={lotID} showAll={showAll} />        
+
+        {showForm && <NewLot />}
+        {lotID === ""
+          ? showAll &&
+            lots.map((thisLot) => (
+              <LotsCard
+                key={thisLot._id}
+                lotID={lotID}
+                lots={lots}
+                thisLot={thisLot}
+              />
+            ))
+          : lots.filter((theseLot) => {
+              if (theseLot.lot === lotID) {
+              return (
+                <LotsCard
+                  key={theseLot._id}
+                  lotID={lotID}
+                  lots={lots}
+                  thisLot={theseLot}
+                />
+              );}
+              return
+            })}
       </div>
     </div>
   );

@@ -25,12 +25,20 @@ lotRouter.post("/", (req, res, next) => {
     })
 })
 // Update
-lotRouter.put("/:lotID", (req, res) => {
-    const lotID = req.params.lotID
-    const updatedObject = req.body
-    const lotIndex = Lots.findIndex(lots => lots._id === lotID)
-    const updatedLot = Object.assign(Lots[lotIndex], updatedObject)
-    res.status(202).send(updatedLot)
+lotRouter.put("/:lotID", (req, res, next) => {
+    Lots.findOneAndUpdate(
+     { _id: req.params.lotID }, 
+     req.body, 
+     { new: true },
+     (err, updatedLots) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(updatedLots)
+     }  
+    )
+   
 })
 
 module.exports = lotRouter;

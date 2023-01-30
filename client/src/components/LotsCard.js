@@ -1,10 +1,10 @@
 import React from "react";
-import { AxioContext } from "../axioContext";
+//import { AxioContext } from "../axioContext";
 import "../CssFiles/LotsCard.css";
 import EditLots from "./EditLots";
 
 export default function LotsCard(props) {
-  const { lots } = React.useContext(AxioContext);
+  const { lots, thisLot, lotID, showAll } = props;
   const [editToggle, setEditToggle] = React.useState(false);
   // function handleChange(event) {
   //   const { name, value } = event.target;
@@ -13,66 +13,44 @@ export default function LotsCard(props) {
   // }
   return (
     <div className="allthelots">
-      {props.showAll
-        ? lots.length > 0 &&
-          lots.map((stuff) => {
-            return stuff.lot === "" ? (
-              <h1>No Lots Found</h1>
-            ) : (
-              <div
-                key={stuff._id}
-                className="lotsCard-container"
-                style={
-                  props.showAll && props.lotID === stuff.lot
-                    ? { backgroundColor: "blue" }
-                    : { backgroundColor: "white" }
-                }
-              >
-                {!editToggle ? (
-                  <EditLots editToggle setEditToggle lots />
-                ) : (
-                  <div>
-                    <button
-                      className="btn"
-                      onClick={() => {
-                        setEditToggle((prevToggle) => !prevToggle);
-                      }}
-                    >
-                      <i className="fa-solid fa-pencil"></i>
-                    </button>
-                  </div>
-                )}
-
-                <h3>Lot #: {stuff.lot}</h3>
-                <h4>Family Name: {stuff.lastName}</h4>
-                <p>Family Info: {stuff.info}</p>
+      
+        <div
+          key={thisLot._id}
+          className="lotsCard-container"
+          style={
+            showAll && lotID === thisLot.lot
+              ? { backgroundColor: "blue" }
+              : { backgroundColor: "white" }
+          }
+        >
+          {editToggle ? (
+            <>
+              <EditLots
+                editToggle
+                setEditToggle
+                lots={lots}
+                thisLot={thisLot}
+              />
+            </>
+          ) : (
+            <>
+              <div>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    setEditToggle((prevToggle) => !prevToggle);
+                  }}
+                >
+                  <i className="fa-solid fa-pencil"></i>
+                </button>
               </div>
-            );
-          })
-          // if showAll === false and show.lot matches lotID then show only the lots that match 
-        : lots 
-            .filter((show) => Number(show.lot) === Number(props.lotID))
-            .map((filteredlot) => (
-              <div key={filteredlot._id} className="lotsCard-container">
-                {editToggle ? (
-                  <EditLots editToggle setEditToggle lots />
-                ) : (
-                  <div>
-                    <button
-                      className="btn"
-                      onClick={() => {
-                        setEditToggle((prevToggle) => !prevToggle);
-                      }}
-                    >
-                      <i className="fa-solid fa-pencil"></i>
-                    </button>
-                  </div>
-                )}
-                <h3>Lot #: {filteredlot.lot}</h3>
-                <h4>Family Name: {filteredlot.lastName}</h4>
-                <p>Family Info: {filteredlot.info}</p>
-              </div>
-            ))}
+              <h3>Lot #: {thisLot.lot}</h3>
+              <h4>Family Name: {thisLot.lastName}</h4>
+              <p>Family Info: {thisLot.info}</p>
+            </>
+          )}
+        </div>
+      
     </div>
   );
 }
