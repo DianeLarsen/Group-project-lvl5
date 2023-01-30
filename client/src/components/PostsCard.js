@@ -9,7 +9,7 @@ export default function LotsCard(props) {
   let tagColor
 if(posts.type === "Help Wanted"){
   tagColor = "tag tag-blue"
-} else if(posts.type === "Willing to Work"){
+} else if(posts.type === "Willing to work"){
   tagColor = "tag tag-brown"
 }else if(posts.type === "Event"){
   tagColor = "tag tag-green"

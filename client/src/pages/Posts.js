@@ -91,10 +91,11 @@ export default function Posts() {
         <div className="filter-posts">
           <select onChange={handleFilter} className="filter-form">
             <option value="reset">All Posts</option>
-            <option value="help Wanted">Help Wanted</option>
-            <option value="willing to work">Willing to work</option>
-            <option value="event">Event</option>
-            <option value="missing">Missing</option>
+            <option value="Help Wanted">Help Wanted</option>
+            <option value="Willing to work">Willing to work</option>
+            <option value="Event">Event</option>
+            <option value="Missing">Missing</option>
+            <option value="Alert">Alert</option>
           </select>
           <div className="post-wrapper">
             {posts.map((showposts) => (
@@ -112,7 +113,7 @@ export default function Posts() {
           </div>
         </div>
       </div>
-      <div className="spacer-div"></div>
+     
     </div>
   );
 }

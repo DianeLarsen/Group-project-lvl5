@@ -4,21 +4,23 @@ import "../CssFiles/LotsCard.css";
 import EditLots from "./EditLots";
 
 export default function LotsCard(props) {
-  const { lots, thisLot, lotID, showAll } = props;
+  const {id, info, lastName, lot, lotID, showAll, itemTarget } = props;
   const [editToggle, setEditToggle] = React.useState(false);
   // function handleChange(event) {
   //   const { name, value } = event.target;
   //   setNewLot((prevValue) => ({ ...prevValue, [name]: value }));
   //   // eslint-disable-next-line
   // }
+  console.log(showAll && lotID === lot)
   return (
-    <div className="allthelots">
+    <>
+   {itemTarget ? (<div className="allthelots">
       
         <div
-          key={thisLot._id}
+          key={id}
           className="lotsCard-container"
           style={
-            showAll && lotID === thisLot.lot
+            showAll && (lotID === lot)
               ? { backgroundColor: "blue" }
               : { backgroundColor: "white" }
           }
@@ -28,8 +30,11 @@ export default function LotsCard(props) {
               <EditLots
                 editToggle
                 setEditToggle
-                lots={lots}
-                thisLot={thisLot}
+               
+                info={info}
+                id={id}
+                lastName={lastName}
+                lot={lot}
               />
             </>
           ) : (
@@ -44,13 +49,56 @@ export default function LotsCard(props) {
                   <i className="fa-solid fa-pencil"></i>
                 </button>
               </div>
-              <h3>Lot #: {thisLot.lot}</h3>
-              <h4>Family Name: {thisLot.lastName}</h4>
-              <p>Family Info: {thisLot.info}</p>
+              <h3>Lot #: {lot}</h3>
+              <h4>Family Name: {lastName}</h4>
+              <p>Family Info: {info}</p>
             </>
           )}
         </div>
       
-    </div>
+    </div>):(<div className="allthelots">
+      
+      <div
+        key={id}
+        className="lotsCard-container"
+        style={
+          showAll && (lotID === lot)
+            ? { backgroundColor: "blue" }
+            : { backgroundColor: "white" }
+        }
+      >
+        {editToggle ? (
+          <>
+            <EditLots
+              editToggle
+              setEditToggle
+             
+              info={info}
+              id={id}
+              lastName={lastName}
+              lot={lot}
+            />
+          </>
+        ) : (
+          <>
+            <div>
+              <button
+                className="btn"
+                onClick={() => {
+                  setEditToggle((prevToggle) => !prevToggle);
+                }}
+              >
+                <i className="fa-solid fa-pencil"></i>
+              </button>
+            </div>
+            <h3>Lot #: {lot}</h3>
+            <h4>Family Name: {lastName}</h4>
+            <p>Family Info: {info}</p>
+          </>
+        )}
+      </div>
+    
+  </div>)}
+    </>
   );
 }

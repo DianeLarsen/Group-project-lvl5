@@ -8,13 +8,20 @@ import { AxioContext } from "../axioContext";
 
 export default function Lots() {
   const { lotsUsed, lots } = React.useContext(AxioContext);
-  const [itemTarget, setItemTarget] = React.useState(true);
+  const [itemTarget, setItemTarget] = React.useState(false);
   const [lotID, setLotID] = React.useState("");
   const [showForm, setShowForm] = React.useState(false);
   const [showAll, setShowAll] = React.useState(false);
-  // console.log("itemTarget:  " + itemTarget +"  showForm:  " + showForm + "  showAll:  " + showAll)
-  // console.log("lotsUsed:  " + lotsUsed)
-   console.log("lotID:  " + lotID)
+  console.log(
+    "itemTarget:  " +
+      itemTarget +
+      "  showForm:  " +
+      showForm +
+      "  showAll:  " +
+      showAll
+  );
+  //console.log("lotsUsed:  " + lotsUsed)
+  //console.log("lotID:  " + lotID);
   function setTarget(target) {
     // console.log("does clicked match exist?  " + lotsUsed.some((element) => element === target))
     setItemTarget(lotsUsed.some((element) => element === target));
@@ -27,7 +34,9 @@ export default function Lots() {
       setShowForm(true);
     }
   }, [itemTarget]);
-
+  // function filterByLot(item){
+  //   if
+  // }
   return (
     <div className="lots">
       <div className="lot-form-map-container">
@@ -360,29 +369,39 @@ export default function Lots() {
         </div>
 
         {showForm && <NewLot />}
-        {lotID === ""
-          ? showAll &&
-            lots.map((thisLot) => (
-              <LotsCard
-                key={thisLot._id}
-                lotID={lotID}
-                lots={lots}
-                thisLot={thisLot}
-              />
-            ))
-          : lots.filter((theseLot) => {
-              if (theseLot.lot === lotID) {
-              return (
+        <div className=".allthelotsCard-container">
+          {showAll
+          && lots.map((thisLot) => (
                 <LotsCard
-                  key={theseLot._id}
+                  showAll={showAll}
+                  key={thisLot._id}
                   lotID={lotID}
-                  lots={lots}
-                  thisLot={theseLot}
+                  info={thisLot.info}
+                  id={thisLot._id}
+                  lastName={thisLot.lastName}
+                  lot={thisLot.lot}
+                  itemTarget={itemTarget}
                 />
-              );}
-              return
-            })}
+              ))
+            }
+        </div>
       </div>
     </div>
   );
 }
+
+// : (lots.filter((theseLot) => {
+//   if(Number(theseLot.lot) === Number(lotID))
+//  return
+//       <LotsCard
+//         key={theseLot._id}
+//         lotID={lotID}
+//         info={theseLot.info}
+//         id={theseLot._id}
+//         lastName={theseLot.lastName}
+//         lot={theseLot.lot}
+//       />
+
+//   })
+
+// )

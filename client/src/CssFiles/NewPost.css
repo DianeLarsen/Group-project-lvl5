@@ -8,7 +8,8 @@
   padding: 20px;
   min-width: 425px;
   margin-bottom: 20px;
-  margin-top: 35px
+  margin-top: 35px;
+  align-self: flex-start;
 }
 @media only screen and (max-width: 1300px) {
   .new-post-form {

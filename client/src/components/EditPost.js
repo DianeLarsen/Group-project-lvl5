@@ -37,7 +37,7 @@ export default function EditPost(props) {
           >
             <option>* Type</option>
             <option value="Help Wanted">Help Wanted</option>
-            <option value="Willing to Work">Willing to work</option>
+            <option value="Willing to work">Willing to work</option>
             <option value="Event">Event</option>
             <option value="Missing">Missing</option>
             <option value="Alert">Alert</option>

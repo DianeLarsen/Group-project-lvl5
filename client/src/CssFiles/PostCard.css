@@ -17,6 +17,7 @@
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  border-bottom: 100px;
 }
 .filter-posts {
   width: 60%;
@@ -32,6 +33,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  border-bottom: 100px;
 }
 .postcard-container {
   display: flex;
@@ -134,10 +136,7 @@
 .postcard__info > small {
   color: #666;
 }
-.spacer-div {
-  height: 100px;
-  width: 100%;
-}
+
 @media only screen and (max-width: 1300px) {
   .new-postcard {
     display: inline-flex;

@@ -12,6 +12,7 @@ export default function Main() {
         <Route path="/lots" element={<Lots />} />
         <Route path="/posts" element={<Posts />} />
       </Routes>
+      <div className="spacer-div"></div>
     </div>
   );
 }

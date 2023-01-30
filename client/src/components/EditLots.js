@@ -3,13 +3,13 @@ import React from "react";
 import { AxioContext } from "../axioContext";
 
 export default function EditLots(props) {
-  const {lots, thisLot} = props
+
   const { editLots} = React.useContext(AxioContext);
 //console.log(lots.lastName)
 const lotsIntial = {
-  lastName: thisLot.lastName || "",
-  lot: thisLot.lot || "",
-  info: thisLot.info || "",
+  lastName: props.thisLot.lastName || "",
+  lot: props.thisLot.lot || "",
+  info: props.thisLot.info || "",
 };
 const [newLot, setNewLot] = React.useState(lotsIntial);
 function handleChange(event) {
@@ -37,11 +37,11 @@ function handleChange(event) {
       </button>
       <h3>Lot #: {newLot.lot}</h3>
                     <label htmlFor="lastName" >
-                    Family Name</label>
+                    Family Name: </label>
                     <input name="lastName" id="lastName" value={newLot.lastName} onChange={handleChange}/>
                     <label htmlFor="info" >
-                    Family Info</label>
-                    <input name="info" id="info" value={newLot.info} onChange={handleChange}/>
+                    Family Info: </label>
+                    <textarea name="info" id="info" value={newLot.info} onChange={handleChange}/>
     </div>
   );
 }
